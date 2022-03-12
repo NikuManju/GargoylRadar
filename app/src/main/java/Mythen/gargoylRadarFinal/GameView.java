@@ -12,32 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
+
+    private Paint p;
+
     public GameView(Context context) {
         super(context);
-        getHolder().addCallback(this);
-    }
-
-    public GameView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public GameView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    public GameView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        initView();
     }
 
     @Override
-    public void onDraw(Canvas canvas){
+    protected void onDraw(Canvas canvas){
+        super.onDraw(canvas);
         int r = 30;
-        Paint p = new Paint();
-        p.setColor(R.color.red);
         for(int i = 0; i < 5; i++){
             canvas.drawCircle(getWidth()/2,getHeight()/2,r,p);
             r+=100;
         }
+    }
+
+    private void initView(){
+        SurfaceHolder holder = getHolder();
+        holder.addCallback(this);
+        setFocusable(true);
+        SetPaint();
+    }
+
+    private void SetPaint(){
+        p= new Paint();
+        p.setColor(getResources().getColor(R.color.red));
+        p.setStrokeWidth(5);
     }
 
     @Override

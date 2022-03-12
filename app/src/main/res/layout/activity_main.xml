@@ -6,43 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/black">
-
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtubePlayerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/StartButton"
-        android:text="Start"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Latest Mythen-Video"
-        android:id="@+id/YoutubeChannelButton"
-        android:layout_below="@+id/StartButton"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/CancelButton"
-        android:text="Beenden"
-        android:layout_below="@+id/YoutubeChannelButton"/>
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/CancelButton"
-        android:id="@+id/FragmentHolder"/>
+        android:layout_height="300dp"
+        android:id="@+id/FragmentHolder">
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/FragmentHolder">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@id/YoutubeChannelButton"
+            android:id="@+id/StartButton"
+            android:text="Start"
+            android:layout_marginTop="17dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Latest Mythen-Video"
+            android:id="@+id/YoutubeChannelButton"
+            android:layout_below="@+id/StartButton"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:id="@+id/CancelButton"
+            android:text="Beenden"
+            android:layout_below="@+id/YoutubeChannelButton"
+            android:layout_marginBottom="17dp"/>
+    </FrameLayout>
+
+
+
 
 </RelativeLayout>
