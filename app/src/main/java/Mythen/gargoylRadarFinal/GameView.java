@@ -1,5 +1,6 @@
 package Mythen.gargoylRadarFinal;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,13 +9,16 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+import java.util.logging.Logger;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.motion.widget.Debug;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private Paint p;
-
+    private SurfaceHolder holder;
     public GameView(Context context) {
         super(context);
         initView();
@@ -31,7 +35,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void initView(){
-        SurfaceHolder holder = getHolder();
+        holder = getHolder();
         holder.addCallback(this);
         setFocusable(true);
         SetPaint();
@@ -40,12 +44,17 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private void SetPaint(){
         p= new Paint();
         p.setColor(getResources().getColor(R.color.red));
+        p.setStyle(Paint.Style.STROKE);
         p.setStrokeWidth(5);
+
     }
 
+    @SuppressLint("WrongCall")
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
-
+        Canvas can = holder.lockCanvas();
+        onDraw(can);
+        holder.unlockCanvasAndPost(can);
     }
 
     @Override
